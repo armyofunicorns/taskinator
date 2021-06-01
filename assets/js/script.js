@@ -1,20 +1,27 @@
 // console.dir(window.document);
 
-var buttonEl = document.querySelector("#save-task");
+// var buttonEl = document.querySelector("#save-task");
 // console.log(buttonEl);
 
+var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var createTaskHandler = function(taskTitle) {
+var createTaskHandler = function(event) {
+    // Stops the default behavior to reload page
+    event.preventDefault();
+
+    let newTaskContent = document.querySelector("#task-form").textContent;
+    console.log(newTaskContent);
+
     var listItemEl = document.createElement("li");
     listItemEl.className = "task-item";
-    listItemEl.textContent = taskTitle;
+    listItemEl.textContent = newTaskContent;
     tasksToDoEl.appendChild(listItemEl);
 };
 
-buttonEl.addEventListener("click", function() {
-    let newTask = "Here is the new task";
-    createTaskHandler(newTask);
-});
+// buttonEl.addEventListener("click", function() {
+//     let newTask = "Here is the new task";
+//     createTaskHandler(newTask);
+// });
 
-// buttonEl.addEventListener("click", createTaskHandler);
+formEl.addEventListener("submit", createTaskHandler);
