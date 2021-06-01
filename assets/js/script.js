@@ -2,20 +2,32 @@
 // var buttonEl = document.querySelector("#save-task");
 // console.log(buttonEl);
 
-var formEl = document.querySelector("#task-form");
-var tasksToDoEl = document.querySelector("#tasks-to-do");
+let formEl = document.querySelector("#task-form");
+let tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var taskFormHandler = function(event) {
+let taskFormHandler = function(event) {
     // Stops the default behavior to reload page
     event.preventDefault();
 
     // Capturing the values in Input and Select form fields
     let taskNameInput = document.querySelector("input[name='task-name']").value;
     // console.dir(taskNameInput);
-    var taskTypeInput = document.querySelector("select[name='task-type']").value;
+    let taskTypeInput = document.querySelector("select[name='task-type']").value;
+
+    // Field validation
+    // check if input values are empty strings
+    if (!taskNameInput) {
+        alert("You are missing the task title.");
+        return false;
+    } else if (!taskTypeInput) {
+        alert("You are missing the task type.");
+        return false;
+    };
+
+    formEl.reset();
 
     // package up data as an object
-    var taskDataObj = {
+    let taskDataObj = {
         name: taskNameInput,
         type: taskTypeInput
     };
@@ -45,8 +57,9 @@ var createTaskEl = function(taskDataObj) {
     tasksToDoEl.appendChild(listItemEl);
 
     // Clear the field of the last input
-    document.getElementById("inputField").value = "";
-    document.getElementById("selectField").value = "";
+    // document.getElementById("inputField").value = "";
+    // document.getElementById("selectField").value = "";
+    formEl.reset();
 }
 
 // buttonEl.addEventListener("click", function() {
