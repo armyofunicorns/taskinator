@@ -11,7 +11,7 @@ var createTaskHandler = function(event) {
 
     // Capturing the values in Input and Select form fields
     let taskNameInput = document.querySelector("input[name='task-name']").value;
-    console.dir(taskNameInput);
+    // console.dir(taskNameInput);
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
     // Create a new li element and add a class
@@ -34,7 +34,6 @@ var createTaskHandler = function(event) {
     // Clear the field of the last input
     document.getElementById("inputField").value = "";
     document.getElementById("selectField").value = "";
-    
 };
 
 // buttonEl.addEventListener("click", function() {
