@@ -13,14 +13,15 @@
         <p>Click the button below to add a new task!</p>
         <form id="task-form">
             <div class="form-group">
-                <input type="text" name="task-name" placeholder="Enter Task Name" />
+                <input type="text" name="task-name" placeholder="Enter Task Name" id="inputField" />
             </div>
             <div class="form-group">
-                <select name="task-type" class="select-dropdown"> 
+                <select name="task-type" class="select-dropdown" id="selectField"> 
                   <option value="" disabled selected>Pick a task type</option>
-                  <option value="Print">Print</option>
-                  <option value="Web">Web</option>
-                  <option value="Mobile">Mobile</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Work">Work</option>
+                  <option value="School">School</option>
+                  <option value="Health">Health</option>
                 </select>
             </div>
             <div class="form-group">
@@ -33,7 +34,7 @@
         <section class="task-list-wrapper">
             <h2 class="list-title">Tasks To Do</h2>
             <ul class="task-list" id="tasks-to-do">
-                <li class="task-item">A task is going to be added soon!</li>
+                <!-- <li class="task-item">A task is going to be added soon!</li> -->
             </ul>
         </section>
     </main>
