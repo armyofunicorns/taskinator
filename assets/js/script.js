@@ -16,3 +16,5 @@ buttonEl.addEventListener("click", function() {
     let newTask = "Here is the new task";
     createTaskHandler(newTask);
 });
+
+// buttonEl.addEventListener("click", createTaskHandler);
