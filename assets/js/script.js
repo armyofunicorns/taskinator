@@ -124,7 +124,6 @@ let taskButtonHandler = function(event) {
         let taskId = targetEl.getAttribute("data-task-id");
         deleteTask(taskId);
     } else if (targetEl.matches(".edit-btn")) {
-        console.log("hellow");
         let taskId = targetEl.getAttribute("data-task-id");
         editTask(taskId);
     };
@@ -138,16 +137,22 @@ let deleteTask = function(taskId) {
 };
 
 let editTask = function(taskId) {
-    console.log("This is the edit Id: " + taskId);
+    // console.log("This is the edit Id: " + taskId);
     // get task list item element
     let taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
 
     // get content from task name and type
     var taskName = taskSelected.querySelector("h3.task-name").textContent;
-    console.log(taskName);
+    // console.log(taskName);
 
     var taskType = taskSelected.querySelector("span.task-type").textContent;
     console.log(taskType);
+
+    document.querySelector("input[name='task-name']").value = taskName;
+    // document.querySelector("select[name='task-type'] select.options[select.selectedIndex]").value = taskType;
+    document.querySelectorAll("option:checked")[0].value;
+    document.querySelector("#save-task").textContent = "Save Task";
+    formEl.setAttribute("data-task-id", taskId);
 };
 
 // buttonEl.addEventListener("click", function() {
