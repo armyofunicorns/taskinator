@@ -116,25 +116,38 @@ let createTaskActions = function(taskId) {
 
 let taskButtonHandler = function(event) {
     // console.log(event.target);
+    // get target element from event
+    let targetEl = event.target;
+    console.log(targetEl);
 
-    if (event.target.matches(".delete-btn")) {
-        let taskId = event.target.getAttribute("data-task-id");
+    if (targetEl.matches(".delete-btn")) {
+        let taskId = targetEl.getAttribute("data-task-id");
         deleteTask(taskId);
-    } else if (event.target.matches("edit-btn")) {
-        let taskId = event.target.getAttribute("data-task-id");
+    } else if (targetEl.matches(".edit-btn")) {
+        console.log("hellow");
+        let taskId = targetEl.getAttribute("data-task-id");
         editTask(taskId);
     };
 };
 
 let deleteTask = function(taskId) {
-    console.log("This is the delete Id: " + taskId);
+    // console.log("This is the delete Id: " + taskId);
     let taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
-    console.log(taskSelected);
+    // console.log(taskSelected);
     taskSelected.remove();
 };
 
 let editTask = function(taskId) {
     console.log("This is the edit Id: " + taskId);
+    // get task list item element
+    let taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+
+    // get content from task name and type
+    var taskName = taskSelected.querySelector("h3.task-name").textContent;
+    console.log(taskName);
+
+    var taskType = taskSelected.querySelector("span.task-type").textContent;
+    console.log(taskType);
 };
 
 // buttonEl.addEventListener("click", function() {
