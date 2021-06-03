@@ -183,8 +183,8 @@ let completeEditTask = function(taskName, taskType, taskId) {
 };
 
 let taskStatusChangeHandler = function(event) {
-    console.log(event.target);
-    console.log(even.target.getAttribute("data-task-id"));
+    // console.log(event.target);
+    // console.log(even.target.getAttribute("data-task-id"));
     // get the task item's id
     let taskId = event.target.getAttribute("data-task-id");
 
