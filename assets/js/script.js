@@ -6,6 +6,7 @@
 let taskIdCounter = 1;
 // Create an array
 let tasks = [];
+let newTaskAh = [];
 
 let formEl = document.querySelector("#task-form");
 let tasksToDoEl = document.querySelector("#tasks-to-do");
@@ -250,13 +251,24 @@ let taskStatusChangeHandler = function(event) {
     }
 
     saveTasks();
+};
 
+let saveTasks = function() {    
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+let loadTasks = function() {
+    // Three things we are doing here
+    // 1. Gets tasks from localStorage.
+    tasks = localStorage.getItem("tasks");
+    console.log(tasks);
+    // 2. Converts tasks from the string format back into an array of objects.
+    // 3. Iterates through a tasks array and creates task elements on the page from it.
     
 };
 
-var saveTasks = function() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+// Look for tasks
+loadTasks();
 
 // buttonEl.addEventListener("click", function() {
 //     let newTask = "Here is the new task";
