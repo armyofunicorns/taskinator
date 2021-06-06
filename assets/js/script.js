@@ -5,13 +5,13 @@
 // Declare the counter
 let taskIdCounter = 0;
 // Declare an array of objects
-var tasks = [];
+let tasks = [];
 
 let formEl = document.querySelector("#task-form");
 let tasksToDoEl = document.querySelector("#tasks-to-do");
 let pageContentEl = document.querySelector("#page-content");
-var tasksInProgressEl = document.querySelector("#tasks-in-progress");
-var tasksCompletedEl = document.querySelector("#tasks-completed");
+let tasksInProgressEl = document.querySelector("#tasks-in-progress");
+let tasksCompletedEl = document.querySelector("#tasks-completed");
 
 let taskFormHandler = function(event) {
     // Stops the default behavior to reload page
@@ -34,7 +34,7 @@ let taskFormHandler = function(event) {
 
     formEl.reset();
 
-    var isEdit = formEl.hasAttribute("data-task-id");
+    let isEdit = formEl.hasAttribute("data-task-id");
     // console.log(isEdit);
 
     // send it as an argument to createTaskEl
@@ -83,6 +83,9 @@ let createTaskEl = function(taskDataObj) {
     taskDataObj.id = taskIdCounter;
     tasks.push(taskDataObj);
     console.log(tasks);
+
+    // Save to localStorage
+    saveTasks();
     
     let taskActionsEl = createTaskActions(taskIdCounter);
     // console.log(taskActionsEl);
@@ -161,7 +164,7 @@ let deleteTask = function(taskId) {
     taskSelected.remove();
 
     // create new array to hold updated list of tasks
-    var updatedTaskArr = [];
+    let updatedTaskArr = [];
 
     // loop through current tasks
     for (var i = 0; i < tasks.length; i++) {
@@ -173,6 +176,9 @@ let deleteTask = function(taskId) {
 
     // reassign tasks array to be the same as updatedTaskArr
     tasks = updatedTaskArr;
+
+    // Save to localStorage
+    saveTasks();
 };
 
 let editTask = function(taskId) {
@@ -213,6 +219,9 @@ let completeEditTask = function(taskName, taskType, taskId) {
     };
     // debugger;
 
+    // Save to localStorage
+    saveTasks();
+
     alert("Task Updated!");
 
     formEl.removeAttribute("data-task-id");
@@ -239,7 +248,14 @@ let taskStatusChangeHandler = function(event) {
     else if (statusValue === "completed") {
         tasksCompletedEl.appendChild(taskSelected);
     }
+
+    // Save to localStorage
+    saveTasks();
 };
+
+let saveTasks = function() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
 // buttonEl.addEventListener("click", function() {
 //     let newTask = "Here is the new task";
