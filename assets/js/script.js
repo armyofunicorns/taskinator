@@ -4,6 +4,9 @@
 
 // Declare the counter
 let taskIdCounter = 1;
+// Declare an array of objects
+var tasks = [];
+
 let formEl = document.querySelector("#task-form");
 let tasksToDoEl = document.querySelector("#tasks-to-do");
 let pageContentEl = document.querySelector("#page-content");
@@ -45,8 +48,9 @@ let taskFormHandler = function(event) {
     // no data attribute, so create object as normal and pass to createTaskEl function
     else {
         let taskDataObj = {
-        name: taskNameInput,
-        type: taskTypeInput
+            name: taskNameInput,
+            type: taskTypeInput,
+            status: "to do",
         };
     
         createTaskEl(taskDataObj);
@@ -55,6 +59,9 @@ let taskFormHandler = function(event) {
 };
 
 let createTaskEl = function(taskDataObj) {
+    console.log(taskDataObj);
+    console.log(taskDataObj.status);
+
     // Create a new li element and add a class
     let listItemEl = document.createElement("li");
     listItemEl.className = "task-item";
@@ -71,6 +78,11 @@ let createTaskEl = function(taskDataObj) {
 
     // Append new div element
     listItemEl.appendChild(taskInfoEl);
+
+    // Updating createTaskEl() 
+    taskDataObj.id = taskIdCounter;
+    tasks.push(taskDataObj);
+    console.log(tasks);
     
     let taskActionsEl = createTaskActions(taskIdCounter);
     // console.log(taskActionsEl);
