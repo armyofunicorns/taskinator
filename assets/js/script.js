@@ -36,10 +36,7 @@ let taskFormHandler = function(event) {
     formEl.reset();
 
     let isEdit = formEl.hasAttribute("data-task-id");
-    // console.log(isEdit);
-
-    // send it as an argument to createTaskEl
-    // createTaskEl(taskDataObj);
+    console.log(isEdit);
 
     // has data attribute, so get task id and call function to complete edit process
     if (isEdit) {
@@ -48,20 +45,23 @@ let taskFormHandler = function(event) {
     } 
     // no data attribute, so create object as normal and pass to createTaskEl function
     else {
-        let taskDataObj = {
-        name: taskNameInput,
-        type: taskTypeInput,
-        status: "to do"
+        console.log("here boy");
+        var taskDataObj = {
+            id: 1,
+            name: taskNameInput,
+            type: taskTypeInput,
+            status: "to do"
         };
-    
+        console.log(taskDataObj);
+        // send it as an argument to createTaskEl function
         createTaskEl(taskDataObj);
-    }
+    };
 
 };
 
 let createTaskEl = function(taskDataObj) {
     console.log(taskDataObj);
-    // console.log(taskDataObj.status);
+    console.log(taskDataObj.status);
 
     // Create a new li element and add a class
     let listItemEl = document.createElement("li");
@@ -261,7 +261,7 @@ let loadTasks = function() {
     // Three things we are doing here
     // 1. Gets tasks from localStorage.
     tasks = localStorage.getItem("tasks");
-    console.log(tasks);
+    console.log("Are these the tasks? " + tasks);
     // 2. Converts tasks from the string format back into an array of objects.
     // 3. Iterates through a tasks array and creates task elements on the page from it.
     
