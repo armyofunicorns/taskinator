@@ -206,12 +206,11 @@ let completeEditTask = function(taskName, taskType, taskId) {
     // console.log(taskName, taskType, taskId);
     // find the matching task list item
     let taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
-
+    
     // set new values
     taskSelected.querySelector("h3.task-name").textContent = taskName;
     taskSelected.querySelector("span.task-type").textContent = taskType;
 
-    // debugger;
     // loop through tasks array and task object with new content
     for (var i = 0; i < tasks.length; i++) {
         if (tasks[i].id === parseInt(taskId)) {
@@ -219,7 +218,6 @@ let completeEditTask = function(taskName, taskType, taskId) {
             tasks[i].type = taskType;
         }
     };
-    // debugger;
 
     // Save to localStorage
     saveTasks();
@@ -240,6 +238,8 @@ let taskStatusChangeHandler = function(event) {
 
     // find the parent task item element based on the id
     let taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+
+    
 
     if (statusValue === "to do") {
         tasksToDoEl.appendChild(taskSelected);
@@ -293,6 +293,8 @@ let loadTasks = function() {
             listItemEl.appendChild(taskActionsEl);
 
             let currentIndex = listItemEl.querySelector("select[name='status-change']");
+            // document.querySelector("select[name='task-type'] select.options[select.selectedIndex]").value = taskType;
+            //  document.querySelectorAll("option:checked")[0].value;
             console.log(currentIndex);
             // Check to make sure all the tasks are set to to-do
             if (tasks[i].status === "to do") {
